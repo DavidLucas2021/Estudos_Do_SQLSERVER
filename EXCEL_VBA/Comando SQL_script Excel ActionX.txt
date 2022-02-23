@@ -1,0 +1,61 @@
+Private Sub CommandButton1_Click()
+
+Dim conn       As New ADODB.Connection
+Dim rs         As New ADODB.Recordset
+
+Dim SQL        As String
+Dim ln         As Long
+Dim col        As Integer
+Dim W          As Worksheet
+Dim UltCell    As Range
+Dim vID        As Long
+Dim vNome      As String
+Dim vLogin     As String
+Dim vDataNasc  As Date
+Dim vDataCad   As Date
+Dim vSexo      As String
+
+Set W = Sheets("ALUNOS")
+Set UltCell = W.Cells(W.Rows.Count, 1).End(xlUp)
+
+W.Select
+ln = 2
+col = 1
+
+conn.Open "Provider=SQLNCLI11;Server=DESKTOP-O72G9B1;Database=SQL_DB_AULAS;Trusted_Connection=yes;"
+
+Do While ln <= UltCell.Row
+
+  vID = W.Cells(ln, col)
+  vNome = Trim(W.Cells(ln, col + 1))
+  vDataNasc = W.Cells(ln, col + 2)
+  vSexo = W.Cells(ln, col + 3)
+  vDataCad = Now
+  vLogin = UCase(Environ("Username"))
+  
+  SQL = "INSERT INTO Table_aluno"
+  SQL = SQL & "(ID_ALUNO,NOME,DATA_NASCIMENTO,SEXO,DATA_CADASTRO,LOGIN_CADASTRO)"
+  SQL = SQL & " VALUES "
+  SQL = SQL & " (" & vID & ", "
+  SQL = SQL & "'" & vNome & "', "
+  
+  SQL = SQL & "'" & vDataNasc & "', "
+  SQL = SQL & "'" & vSexo & "', "
+  SQL = SQL & "'" & vDataCad & "', "
+  SQL = SQL & "'" & vLogin & "')"
+  
+  rs.Open SQL, conn
+  
+  ln = ln + 1
+    
+  Loop
+  
+  conn.Close
+  MsgBox "concluido"
+  
+  Set conn = Nothing
+  Set rs = Nothing
+  Set W = Nothing
+  Set UltCell = Nothing
+  
+End Sub
