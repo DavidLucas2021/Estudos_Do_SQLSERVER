@@ -1,0 +1,16 @@
+A tabela "ALUNOS" foi criada para fazer insert 
+na Table.alunos do SQLSERVER. Nesta tabela do 
+excel há um botão que quando clicado executa a inclusão 
+de todos o elementos da lista. 
+
+Para funcionamento do botão é utilizado o trecho de código 
+no arquivo de texto "Comando SQL_script Excel ActionX".
+O excel inicia sem esse trecho de código, por isso, deve-se 
+ir na opção Desenvolvedor em Modo de Design e clicar duas vezes 
+no botão. Ao clicar duas vezes será aberto o IDE do visual basic
+aonde deve ser inserido o trecho de código e depois inserido um 
+novo módulo. Caso queira que o processo rode inserindo um registro
+de cada vez, deve-se iniciar a depuração, colocar um blackpoint 
+em do while e executar ate rs.Open sql,conn. Caso o contrário,
+o processo inclui todos o registros de uma vez só.
+ 

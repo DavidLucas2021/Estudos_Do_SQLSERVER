@@ -31,7 +31,8 @@ Do While ln <= UltCell.Row
   vDataNasc = W.Cells(ln, col + 2)
   vSexo = W.Cells(ln, col + 3)
   vDataCad = Now
-  vLogin = UCase(Environ("Username"))
+  vLogin = W.Cells(ln, col + 4)
+  
   
   SQL = "INSERT INTO Table_aluno"
   SQL = SQL & "(ID_ALUNO,NOME,DATA_NASCIMENTO,SEXO,DATA_CADASTRO,LOGIN_CADASTRO)"
@@ -44,7 +45,7 @@ Do While ln <= UltCell.Row
   SQL = SQL & "'" & vDataCad & "', "
   SQL = SQL & "'" & vLogin & "')"
   
-  rs.Open SQL, conn
+   rs.Open SQL, conn
   
   ln = ln + 1
     
@@ -57,5 +58,5 @@ Do While ln <= UltCell.Row
   Set rs = Nothing
   Set W = Nothing
   Set UltCell = Nothing
-  
+
 End Sub
