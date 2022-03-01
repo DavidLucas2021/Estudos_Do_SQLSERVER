@@ -44,3 +44,24 @@ VALUES (01,01,1046,0.2,GETDATE(),'DAVI_L');
 --select VALOR,DESCONTO,LOGIN_CADASTRO FROM dbo.ALUNOS_TURMAS;
 --select * from dbo.Turmas t
 --select t.DATA_CADASTRO,t.DATA_INCIO from dbo.Turmas t
+
+select * from dbo.Cursos; 
+
+select * from dbo.Cursos 
+where NOME_CURSO = 'Técnico em Automação';
+
+select * from dbo.Cursos 
+where NOME_CURSO <> 'Técnico em Automação';
+
+select * from dbo.Table_aluno;
+
+select * from dbo.Table_aluno
+where DATA_NASCIMENTO >= '07/11/1992'
+or LOGIN_CADASTRO = 'DAVI_L';
+
+select a.NOME,a.SEXO, YEAR(a.DATA_CADASTRO) ANO
+from dbo.Table_aluno a
+where a.DATA_NASCIMENTO >= '01/01/1990';
+
+select at.ID_ALUNO,floor(at.VALOR)
+  from dbo.ALUNOS_TURMAS at;
